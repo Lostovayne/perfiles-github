@@ -8,7 +8,7 @@ export interface PerfilUsuarioProps {
 
 const PerfilUsuario: React.FC<PerfilUsuarioProps> = ({ userName }) => {
   const [favorite, setFavorite] = useState(false)
-  const user = useUser({ userName })
+  const { user } = useUser({ userName })
 
   return (
     <div className='flex gap-3 mt-5 bg-gray-500/5 w-full md:w-96  items-center px-3 py-4 rounded-md border border-gray-200 cursor-pointer  hover:shadow'>
