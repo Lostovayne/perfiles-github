@@ -11,9 +11,13 @@ const PerfilUsuario: React.FC<PerfilUsuarioProps> = ({ userName }) => {
   const { user } = useUser({ userName })
 
   return (
-    <div className='flex gap-3 mt-5 bg-gray-500/5 w-full md:w-96  items-center px-3 py-4 rounded-md border border-gray-200 cursor-pointer  hover:shadow'>
+    <div className='flex gap-3 mt-5 bg-gray-500/5 w-full md:w-96  items-start px-5 py-8 rounded-md border border-gray-200 cursor-pointer  hover:shadow'>
       <img
-        src={user?.avatar_url}
+        src={
+          user?.avatar_url
+            ? user?.avatar_url
+            : 'https://datacuber.cl/images/github/github.png'
+        }
         alt={`imagen perfil ${user?.login}`}
         className='w-16 h-16 rounded-full object-cover'
       />
