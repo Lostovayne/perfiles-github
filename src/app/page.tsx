@@ -13,7 +13,7 @@ export default function Home () {
   }
 
   return (
-    <main className='h-screen flex justify-center items-center w-screen bg-gray-500/5'>
+    <main className='h-screen flex justify-center items-center w-screen bg-[#E6EAF8]'>
       <section className='bg-white h-[50rem] rounded-lg  w-full md:w-[37.5rem] lg:w-[70rem] mx-4 p-8 shadow-sm'>
         <h2 className='text-gray-700 text-2xl font-medium'>
           Lista de Usuarios{' '}
@@ -23,7 +23,7 @@ export default function Home () {
             <input
               type='text'
               placeholder='Search...'
-              className='w-full  rounded-lg py-3 px-4  mt-2 border focus:outline-none focus:border-gray-600/40'
+              className='w-full text-gray-500 rounded-lg py-3 px-4  mt-2 border focus:outline-none focus:border-gray-600/40'
               name='search'
             />
 

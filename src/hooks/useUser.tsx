@@ -8,11 +8,13 @@ interface PropsUser {
 interface UseUserResult {
   user: Usuario | null
   recentSearches: Array<Usuario>
+  error: boolean
 }
 
 export const useUser = ({ userName }: PropsUser): UseUserResult => {
   const [user, setUser] = useState<Usuario | null>(null)
   const [recentSearches, setRecentSearches] = useState<Array<Usuario>>([])
+  const [error, setError] = useState(true)
 
   useEffect(() => {
     if (!userName) {
@@ -24,26 +26,20 @@ export const useUser = ({ userName }: PropsUser): UseUserResult => {
       .then(response => response.json())
       .then(data => {
         if (data?.message) {
-          console.error(
-            `Error fetching user data for ${userName}: ${data.message}`
-          )
+          setError(true)
           return
         }
 
         setUser(data)
         setRecentSearches(prevRecentSearches => [...prevRecentSearches, data])
       })
-      .catch(error =>
-        console.error(
-          `Error fetching user data for ${userName}: ${error.message}`
-        )
-      )
+      .catch(error => setError(true))
+    setError(false)
   }, [userName])
-
-  console.log(recentSearches)
 
   return {
     user,
-    recentSearches
+    recentSearches,
+    error
   }
 }
